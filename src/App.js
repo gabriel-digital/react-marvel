@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 
@@ -10,12 +10,19 @@ import Comics from "./containers/Comics";
 import Favorites from "./containers/Favorites";
 
 function App() {
+  const [favorites, setFavorites] = useState([]);
+  const [isFavorite, setIsFavorite] = useState(false);
   return (
     <Router>
       <Header />
       <Switch>
         <Route path="/favoris">
-          <Favorites />
+          <Favorites
+            favorites={favorites}
+            setFavorites={setFavorites}
+            isFavorite={isFavorite}
+            setIsFavorite={setIsFavorite}
+          />
         </Route>
         <Route path="/comics">
           <Comics />
@@ -24,7 +31,12 @@ function App() {
           <Character />
         </Route>
         <Route path="/">
-          <Characters />
+          <Characters
+            favorites={favorites}
+            setFavorites={setFavorites}
+            isFavorite={isFavorite}
+            setIsFavorite={setIsFavorite}
+          />
         </Route>
       </Switch>
       <Footer />

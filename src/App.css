@@ -25,6 +25,10 @@ a,
 button,
 input[type="submit"] {
   cursor: pointer;
+  outline: none;
+}
+button {
+  border: none;
 }
 .container {
   max-width: 1024px;
@@ -32,6 +36,7 @@ input[type="submit"] {
   display: flex;
   flex-direction: column;
 }
+
 /* header */
 header {
   background-color: var(--main-color);
@@ -45,24 +50,60 @@ header a {
   text-transform: uppercase;
   font-weight: 700;
 }
+
+/* footer */
+footer {
+  margin-top: 40px;
+  background-color: var(--marvel-color);
+  color: var(--main-color-invert);
+  padding: 15px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+}
+footer a {
+  color: var(--main-color-invert);
+  text-decoration: underline;
+}
+
 /* main */
 main h1 {
   background-color: var(--marvel-color);
   color: var(--main-color-invert);
+  font-size: 28px;
   text-transform: uppercase;
   font-weight: 700;
   text-align: center;
   padding: 12px;
+  margin-bottom: 30px;
 }
 main section {
   display: grid;
 }
+/* recherche sans résultats */
+.noResults {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.noResults a {
+  color: var(--marvel-color);
+}
+.noResults a:hover {
+  color: var(--marvel-color);
+  text-decoration: underline;
+}
+.noResults img {
+  max-width: 100%;
+}
 /* card*/
-main section button {
+main section button .card,
+main section .card {
   margin-bottom: 20px;
   background-color: var(--main-color);
   color: var(--main-color-invert);
   max-width: 100%;
+  position: relative;
   display: flex;
   flex-direction: row;
   text-align: left;
@@ -71,28 +112,38 @@ main section button {
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
 }
-main section button:hover {
+main section button:hover .card {
   box-shadow: 1px 1px 8px 1px #494b4d;
 }
-main section button:hover h2 {
+main section button:hover .card h2 {
   color: var(--marvel-color);
 }
-main section img {
+main section .card img {
   max-width: 150px;
   margin-right: 20px;
   object-fit: cover;
   object-position: center;
 }
-main section button > div {
-  padding: 15px;
+main section .card > div,
+main section button .card > div {
+  padding: 15px 60px 15px 15px;
 }
-main section h2 {
-  font-size: 2em;
+main section .card h2 {
+  font-size: 24px;
   margin-bottom: 15px;
 }
-main section p {
-  font-size: 1.3em;
+main section .card p {
+  font-size: 17px;
 }
+
+main section .card button.favorites {
+  padding: 8px;
+  border-radius: 3px;
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+}
+
 /* pagination */
 .pagination {
   display: flex;
@@ -102,12 +153,12 @@ main section p {
 .pagination button {
   padding: 8px 12px;
   border-radius: 3px;
-  background-color: var(--marvel-color);
+  background-color: var(--main-color);
   color: var(--main-color-invert);
   font-weight: 700;
 }
 .pagination button.active {
-  background-color: var(--main-color);
+  background-color: var(--marvel-color);
   color: var(--main-color-invert);
 }
 
@@ -135,7 +186,7 @@ textarea {
   border-radius: 5px;
   height: 40px;
   background-color: #f4f6f7;
-  font-size: 1.2em;
+  font-size: 1rem;
   line-height: 40px;
   color: #8191a0;
   border: none;
@@ -149,7 +200,7 @@ input[type="submit"] {
   border-radius: 5px;
   color: var(--main-color-invert);
   font-family: "Roboto", Arial, Helvetica, sans-serif;
-  font-size: 1.2em;
+  font-size: 1rem;
 }
 .error {
   display: inline-block;
