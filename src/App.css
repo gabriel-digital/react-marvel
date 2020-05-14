@@ -1,38 +1,158 @@
-.App {
-  text-align: center;
+/* reset & global */
+:root {
+  --main-color: rgba(32, 32, 32, 1);
+  --main-color-invert: rgba(255, 255, 255, 1);
+  --marvel-color: rgba(230, 36, 41, 1);
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-size: 100%;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+ul,
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: var(--main-color);
+}
+a,
+button,
+input[type="submit"] {
+  cursor: pointer;
+}
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
+}
+/* header */
+header {
+  background-color: var(--main-color);
+  text-align: center;
+  padding-top: 10px;
+}
+header a {
+  display: inline-block;
+  margin: 10px 16px;
+  color: var(--main-color-invert);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+/* main */
+main h1 {
+  background-color: var(--marvel-color);
+  color: var(--main-color-invert);
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+  padding: 12px;
+}
+main section {
+  display: grid;
+}
+/* card*/
+main section button {
+  margin-bottom: 20px;
+  background-color: var(--main-color);
+  color: var(--main-color-invert);
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  box-shadow: 1px 1px 8px 1px #cad1d9;
+  border-radius: 5px;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+main section button:hover {
+  box-shadow: 1px 1px 8px 1px #494b4d;
+}
+main section button:hover h2 {
+  color: var(--marvel-color);
+}
+main section img {
+  max-width: 150px;
+  margin-right: 20px;
+  object-fit: cover;
+  object-position: center;
+}
+main section button > div {
+  padding: 15px;
+}
+main section h2 {
+  font-size: 2em;
+  margin-bottom: 15px;
+}
+main section p {
+  font-size: 1.3em;
+}
+/* pagination */
+.pagination {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 30px;
+}
+.pagination button {
+  padding: 8px 12px;
+  border-radius: 3px;
+  background-color: var(--marvel-color);
+  color: var(--main-color-invert);
+  font-weight: 700;
+}
+.pagination button.active {
+  background-color: var(--main-color);
+  color: var(--main-color-invert);
+}
+
+/* form*/
+form {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 20px auto;
+  padding: 30px 40px;
+  line-height: 30px;
+  background-color: var(--main-color-invert);
+  border-radius: 5px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
-
-.App-link {
-  color: #61dafb;
+input,
+select,
+textarea {
+  width: 65%;
+  padding: 0 10px;
+  background: #fff;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 40px;
+  background-color: #f4f6f7;
+  font-size: 1.2em;
+  line-height: 40px;
+  color: #8191a0;
+  border: none;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input[type="submit"] {
+  width: 30%;
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  background-color: var(--marvel-color);
+  border-radius: 5px;
+  color: var(--main-color-invert);
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 1.2em;
+}
+.error {
+  display: inline-block;
+  margin-left: 8px;
+  color: red;
 }
