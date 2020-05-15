@@ -8,9 +8,12 @@ const Search = ({ setCharacters, setIsLoading }) => {
     if (search) {
       try {
         setIsLoading(true);
-        const response = await axios.post("http://localhost:3100/", {
-          name: search,
-        });
+        const response = await axios.post(
+          "https://gab-marvel-backend.herokuapp.com/",
+          {
+            name: search,
+          }
+        );
         const results = response.data.results;
         setCharacters(results);
         setIsLoading(false);

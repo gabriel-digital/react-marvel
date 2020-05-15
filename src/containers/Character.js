@@ -14,9 +14,12 @@ const Character = () => {
     const fetchdata = async () => {
       try {
         //server resquest: read collection for a marvel character
-        const response = await axios.post("http://localhost:3100/character", {
-          collection: location.state.collection,
-        });
+        const response = await axios.post(
+          "https://gab-marvel-backend.herokuapp.com/character",
+          {
+            collection: location.state.collection,
+          }
+        );
         const results = response.data.results;
         setCharacter(results);
         setIsLoading(false);

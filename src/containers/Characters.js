@@ -17,7 +17,9 @@ const Characters = ({ favorites, setFavorites, isFavorite, setIsFavorite }) => {
     // server request : read 100 marvel characters
     const fetchdata = async () => {
       try {
-        const response = await axios.get(`http://localhost:3100/${page}`);
+        const response = await axios.get(
+          `https://gab-marvel-backend.herokuapp.com/${page}`
+        );
         const results = response.data.results;
         setPagesTotal(response.data.count);
         setCharacters(results);
