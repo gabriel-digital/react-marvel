@@ -55,7 +55,7 @@ const Characters = ({ favorites, setFavorites, isFavorite, setIsFavorite }) => {
                   const fetchdata = async () => {
                     try {
                       const response = await axios.get(
-                        `hhttps://gab-marvel-backend.herokuapp.com/${page}`
+                        `https://gab-marvel-backend.herokuapp.com/${page}`
                       );
                       const results = response.data.results;
                       setPagesTotal(response.data.count);
