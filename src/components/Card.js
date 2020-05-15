@@ -5,7 +5,6 @@ const Card = ({ item, favorites, setFavorites }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const history = useHistory();
   const location = history.location;
-  console.log(location);
 
   return (
     <div className="card">
@@ -21,7 +20,8 @@ const Card = ({ item, favorites, setFavorites }) => {
             className="favorites"
             onClick={(e) => {
               e.preventDefault();
-              // update favorite array
+              // update favorite array with new item
+              // need to code how to remove item from favorites with splice
               let newFavorites = [...favorites];
               newFavorites.push({
                 name: item.name,

@@ -45,8 +45,31 @@ const Characters = ({ favorites, setFavorites, isFavorite, setIsFavorite }) => {
         {characters.length === 0 ? (
           <div className="noResults">
             <p>
-              Pas de résultats... Essayez une autre recherche ou{" "}
-              <Link to="/">retournez à l'acceuil</Link>
+              Pas de résultats... Essayez une autre recherche ou
+              <Link
+                to="/"
+                // new server request if no results from Search
+                // need a better way handle no results
+                onClick={(event) => {
+                  event.preventDefault();
+                  const fetchdata = async () => {
+                    try {
+                      const response = await axios.get(
+                        `hhttps://gab-marvel-backend.herokuapp.com/${page}`
+                      );
+                      const results = response.data.results;
+                      setPagesTotal(response.data.count);
+                      setCharacters(results);
+                      setIsLoading(false);
+                    } catch (error) {
+                      console.log(error);
+                    }
+                  };
+                  fetchdata();
+                }}
+              >
+                &nbsp;Rechargez tous les personnages
+              </Link>
             </p>
             <img
               src="https://pbs.twimg.com/profile_images/1019869958732505088/nAZC4AaM_400x400.jpg"

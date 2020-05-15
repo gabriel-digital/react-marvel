@@ -8,6 +8,7 @@ const Search = ({ setCharacters, setIsLoading }) => {
     if (search) {
       try {
         setIsLoading(true);
+        // need to change method becouse "post" not allowed by Marvel API
         const response = await axios.post(
           "https://gab-marvel-backend.herokuapp.com/",
           {

@@ -3,7 +3,6 @@ import Card from "../components/Card";
 
 const Favorites = ({ favorites, setFavorites, isFavorite, setIsFavorite }) => {
   const fav = JSON.parse(localStorage["favorites"]);
-  console.log(fav);
   return (
     <main>
       <h1>Mes favoris Marvel</h1>
