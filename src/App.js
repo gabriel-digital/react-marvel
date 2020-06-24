@@ -25,8 +25,8 @@ function App() {
         <Route path="/character">
           <Character />
         </Route>
-        <Route path="/results/:search">
-          <Results />
+        <Route path="/results">
+          <Results favorites={favorites} setFavorites={setFavorites} />
         </Route>
         <Route path="/">
           <Characters favorites={favorites} setFavorites={setFavorites} />

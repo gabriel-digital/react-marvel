@@ -230,3 +230,11 @@ input[type='submit'] {
   margin-left: 8px;
   color: red;
 }
+
+@media screen and (max-width: 1024px) {
+  form,
+  main section button .card,
+  main section .card {
+    border-radius: 0;
+  }
+}

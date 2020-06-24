@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Loader from '../components/Loader';
 import Card from '../components/Card';
 import Search from '../components/Search';
 import Pagination from '../components/Pagination';
 
-const Characters = ({ favorites, setFavorites, isFavorite, setIsFavorite }) => {
+const Characters = ({ favorites, setFavorites }) => {
   // init states and consts
+  const { results } = useLocation();
   const [characters, setCharacters] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [pagesTotal, setPagesTotal] = useState(0);
@@ -21,17 +22,22 @@ const Characters = ({ favorites, setFavorites, isFavorite, setIsFavorite }) => {
         const response = await axios.get(
           `${process.env.REACT_APP_ENV}/${page}`
         );
-        const results = response.data.results;
+        const items = response.data.results;
         setPagesTotal(response.data.count);
-        setCharacters(results);
+        setCharacters(items);
         setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
     };
-    fetchdata();
-  }, [page]);
+    if (!results) {
+      fetchdata();
+    } else {
+      setCharacters(results);
+    }
+  }, [page, results]);
 
+  console.log(results);
   return isLoading ? (
     // wait for the server to answer
     <Loader />
@@ -40,13 +46,13 @@ const Characters = ({ favorites, setFavorites, isFavorite, setIsFavorite }) => {
       <h1>Les personnages Marvel</h1>
       <div className="container">
         {/* search form */}
-        <Search setCharacters={setCharacters} setIsLoading={setIsLoading} />
+        <Search setIsLoading={setIsLoading} type="characters" />
 
-        {/* no results for term searched... try again ! */}
+        {/* no results */}
         {characters.length === 0 ? (
           <div className="noResults">
             <p>
-              Pas de résultats... Essayez une autre recherche ou
+              Pas de résultats... Essayez une autre recherche ou&nbsp;
               <Link
                 to="/"
                 // new server request if no results from Search
@@ -69,7 +75,7 @@ const Characters = ({ favorites, setFavorites, isFavorite, setIsFavorite }) => {
                   fetchdata();
                 }}
               >
-                &nbsp;Rechargez tous les personnages
+                Retournez à la liste des personnages
               </Link>
             </p>
             <img
@@ -105,12 +111,14 @@ const Characters = ({ favorites, setFavorites, isFavorite, setIsFavorite }) => {
                 </section>
               );
             })}
-            <Pagination
-              pagesTotal={pagesTotal}
-              page={page}
-              setPage={setPage}
-              setIsLoading={setIsLoading}
-            />
+            {!results && (
+              <Pagination
+                pagesTotal={pagesTotal}
+                page={page}
+                setPage={setPage}
+                setIsLoading={setIsLoading}
+              />
+            )}
           </>
         )}
       </div>

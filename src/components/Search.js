@@ -1,25 +1,40 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
-const Search = ({ setCharacters, setIsLoading }) => {
+import { useHistory } from 'react-router-dom';
+const Search = ({ type, setIsLoading }) => {
   const [search, setSearch] = useState('');
   const [error, setError] = useState('');
+  const history = useHistory();
+  let path = '/';
+  if (type === 'comics') {
+    path = '/comics';
+  }
   const fetchdata = async () => {
     if (search) {
       try {
         setIsLoading(true);
         // need to change method becouse "post" not allowed by Marvel API
-        const response = await axios.post(`${process.env.REACT_APP_ENV}/`, {
-          name: search,
-        });
-        const results = response.data.results;
-        setCharacters(results);
+        let response = {};
+        if (type === 'characters') {
+          response = await axios.post(`${process.env.REACT_APP_ENV}/`, {
+            name: search,
+          });
+        } else {
+          response = await axios.post(`${process.env.REACT_APP_ENV}/comics`, {
+            name: search,
+          });
+        }
+
         setIsLoading(false);
+        history.push({
+          pathname: path,
+          results: response.data.results,
+        });
       } catch (error) {
         console.log(error.message);
       }
     } else {
-      setError('Quel super héros cherches-tu? ');
+      setError('Que cherches-tu? ');
     }
   };
   return (
@@ -31,7 +46,11 @@ const Search = ({ setCharacters, setIsLoading }) => {
     >
       <input
         type="text"
-        placeholder="Rechercher un personnage"
+        placeholder={
+          type === 'characters'
+            ? 'Rechercher un personnage'
+            : 'Rechercher un comics'
+        }
         value={search}
         onChange={(event) => {
           setSearch(event.target.value);
