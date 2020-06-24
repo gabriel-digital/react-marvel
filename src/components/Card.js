@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 
 const Card = ({ type, item, favorites, setFavorites }) => {
   const [isFavorite, setIsFavorite] = useState(false);
-  const history = useHistory();
-  const location = history.location;
   let name = '';
   if (type === 'character' || type === 'favorite') {
     name = item.name;
