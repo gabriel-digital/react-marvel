@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+
+import Loader from '../components/Loader';
 
 const Character = () => {
   // init states and vars
@@ -15,7 +17,7 @@ const Character = () => {
       try {
         //server resquest: read collection for a marvel character
         const response = await axios.post(
-          "https://gab-marvel-backend.herokuapp.com/character",
+          `${process.env.REACT_APP_ENV}/character`,
           {
             collection: location.state.collection,
           }
@@ -31,7 +33,7 @@ const Character = () => {
   }, [location.state.collection]);
 
   return isLoading ? (
-    <p>en chargement...</p>
+    <Loader />
   ) : (
     <main>
       <h1>Les comics avec le personnage Marvel {location.state.name}</h1>
@@ -41,7 +43,7 @@ const Character = () => {
             <section className="characters" key={comic.id}>
               <div className="card">
                 <img
-                  src={comic.thumbnail.path + "." + comic.thumbnail.extension}
+                  src={comic.thumbnail.path + '.' + comic.thumbnail.extension}
                   alt={comic.title}
                 />
                 <div>

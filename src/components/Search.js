@@ -1,20 +1,17 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState } from 'react';
+import axios from 'axios';
 
 const Search = ({ setCharacters, setIsLoading }) => {
-  const [search, setSearch] = useState("");
-  const [error, setError] = useState("");
+  const [search, setSearch] = useState('');
+  const [error, setError] = useState('');
   const fetchdata = async () => {
     if (search) {
       try {
         setIsLoading(true);
         // need to change method becouse "post" not allowed by Marvel API
-        const response = await axios.post(
-          "https://gab-marvel-backend.herokuapp.com/",
-          {
-            name: search,
-          }
-        );
+        const response = await axios.post(`${process.env.REACT_APP_ENV}/`, {
+          name: search,
+        });
         const results = response.data.results;
         setCharacters(results);
         setIsLoading(false);
@@ -22,7 +19,7 @@ const Search = ({ setCharacters, setIsLoading }) => {
         console.log(error.message);
       }
     } else {
-      setError("Quel super héros cherches-tu? ");
+      setError('Quel super héros cherches-tu? ');
     }
   };
   return (
