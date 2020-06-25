@@ -17,6 +17,7 @@
 - [Axios](https://github.com/axios/axios)
 - [Dot](https://www.npmjs.com/package/dotenv)
 
+
 ## Running the project
 
 Clone this repository :
@@ -38,6 +39,10 @@ When installation is complete :
 yarn start
 ```
 
-## See it live
+## See it live here :
 
-https://lucid-nightingale-d13b00.netlify.app/
+[https://lucid-nightingale-d13b00.netlify.app/](https://lucid-nightingale-d13b00.netlify.app/)
+
+## API can be found here :
+
+[https://github.com/gabriel-digital/api-marvel](https://github.com/gabriel-digital/api-marvel)
