@@ -1,5 +1,5 @@
 <h1 align="center">
-	Marvel React - web app coded during [Le Reacteur](https://www.lereacteur.io/)  coding bootcamp
+	Marvel React
 </h1>
 
 <p align="center">
@@ -8,7 +8,7 @@
 
 ## Overview
 
-**Leboncoin Clone made at [Le Reacteur](https://www.lereacteur.io/) Bootcamp.**  
+**web app made at [Le Reacteur](https://www.lereacteur.io/) Bootcamp.**  
 5 pages are availables : characters list, comics list, collection of comics for a charecter, favorites, search result.
 
 ## Packages
