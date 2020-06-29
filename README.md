@@ -15,7 +15,7 @@
 
 - [React Router Dom](https://reacttraining.com/react-router/web/guides/quick-start)
 - [Axios](https://github.com/axios/axios)
-- [Dot](https://www.npmjs.com/package/dotenv)
+- [Dotenv](https://www.npmjs.com/package/dotenv)
 
 
 ## Running the project
