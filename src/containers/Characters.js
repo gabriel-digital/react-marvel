@@ -37,7 +37,6 @@ const Characters = ({ favorites, setFavorites }) => {
     }
   }, [page, results]);
 
-  console.log(results);
   return isLoading ? (
     // wait for the server to answer
     <Loader />

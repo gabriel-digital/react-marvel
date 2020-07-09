@@ -103,6 +103,29 @@ main h1 {
 main section {
   display: grid;
 }
+
+.notFound img {
+  max-width: 100%;
+  height: auto;
+  width: 474px;
+  margin: 0 auto;
+}
+.notFound a {
+  width: 120px;
+  padding: 0 10px;
+  margin: 20px auto 0;
+  background: #fff;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 40px;
+  background-color: #f4f6f7;
+  font-size: 1rem;
+  line-height: 40px;
+  text-align: center;
+  color: var(--marvel-color);
+  font-weight: bold;
+  border: none;
+}
 /* recherche sans résultats */
 .noResults {
   display: flex;

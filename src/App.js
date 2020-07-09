@@ -9,6 +9,7 @@ import Character from './containers/Character';
 import Results from './containers/Results';
 import Comics from './containers/Comics';
 import Favorites from './containers/Favorites';
+import NotFound from './containers/NotFound';
 
 function App() {
   const [favorites, setFavorites] = useState();
@@ -16,21 +17,22 @@ function App() {
     <Router>
       <Header />
       <Switch>
-        <Route path="/favoris">
+        <Route exact path="/favoris">
           <Favorites favorites={favorites} setFavorites={setFavorites} />
         </Route>
-        <Route path="/comics">
+        <Route exact path="/comics">
           <Comics favorites={favorites} setFavorites={setFavorites} />
         </Route>
-        <Route path="/character">
+        <Route exact path="/character">
           <Character />
         </Route>
-        <Route path="/results">
+        <Route exact path="/results">
           <Results favorites={favorites} setFavorites={setFavorites} />
         </Route>
-        <Route path="/">
+        <Route exact path="/">
           <Characters favorites={favorites} setFavorites={setFavorites} />
         </Route>
+        <Route component={NotFound} />
       </Switch>
       <Footer />
     </Router>
